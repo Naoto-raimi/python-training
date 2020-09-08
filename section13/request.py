@@ -10,4 +10,7 @@ payload = {'key1': 'value1', 'key2': 'value2'}
 
 payload = json.dumps(payload).encode('utf-8')
 req = urllib.request.Request(
-    'http://httpbin.org/get', data=payload, method='POST')
+    'http://httpbin.org/post', data=payload, method='POST')
+with urllib.request.urlopen(req) as f:
+    r = json.loads(f.read().decode('utf-8'))
+    print(r)
